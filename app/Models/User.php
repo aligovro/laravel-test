@@ -18,9 +18,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'fullname',
         'email',
         'password',
     ];
+
+    public function documents()
+    {
+        return $this->belongsToMany(Document::class, 'user_documents', 'user_id', 'document_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
